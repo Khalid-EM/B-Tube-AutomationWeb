@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SqTf5Vo+557JGCqjb7bcDEepTTB+cOM0h/+y0iCDld2HDQkYgEpJ1lDK+nQdT3rxqBpWELl/u1ovNV9V0oO/hw==",
+  "dgSpecHash": "RShp2DjkCDsxWas1V5W2oOgxFx4rCZ/FqjpLjzZZWUqTd1o63hshTevm9mm2uVNjM8rs/3ww95o0DoWAejHccQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Khalid EM\\Desktop\\TestProject2 - Copy\\TestProject2\\TestProject2.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\Khalid EM\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
     "C:\\Users\\Khalid EM\\.nuget\\packages\\selenium.webdriver.chromedriver\\98.0.4758.8000\\selenium.webdriver.chromedriver.98.0.4758.8000.nupkg.sha512",
     "C:\\Users\\Khalid EM\\.nuget\\packages\\selenium.webdriver.geckodriver\\0.30.0.1\\selenium.webdriver.geckodriver.0.30.0.1.nupkg.sha512",
+    "C:\\Users\\Khalid EM\\.nuget\\packages\\seleniumextras.waithelpers\\1.0.2\\seleniumextras.waithelpers.1.0.2.nupkg.sha512",
     "C:\\Users\\Khalid EM\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\Khalid EM\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",

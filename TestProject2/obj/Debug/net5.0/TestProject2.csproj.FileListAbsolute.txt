@@ -100,3 +100,4 @@ C:\Users\Khalid EM\Desktop\TestProject2 - Copy\TestProject2\obj\Debug\net5.0\Tes
 C:\Users\Khalid EM\Desktop\TestProject2 - Copy\TestProject2\obj\Debug\net5.0\ref\TestProject2.dll
 C:\Users\Khalid EM\Desktop\TestProject2 - Copy\TestProject2\obj\Debug\net5.0\TestProject2.pdb
 C:\Users\Khalid EM\Desktop\TestProject2 - Copy\TestProject2\obj\Debug\net5.0\TestProject2.genruntimeconfig.cache
+C:\Users\Khalid EM\Desktop\TestProject2 - Copy\TestProject2\bin\Debug\net5.0\SeleniumExtras.WaitHelpers.dll

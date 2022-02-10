@@ -67,6 +67,10 @@
               "target": "Package",
               "version": "[0.30.0.1, )"
             },
+            "SeleniumExtras.WaitHelpers": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.0.2, )"

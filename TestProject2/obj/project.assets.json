@@ -463,6 +463,18 @@
           "build/Selenium.WebDriver.GeckoDriver.targets": {}
         }
       },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.0.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -2029,6 +2041,19 @@
         "nupkg-icon.png",
         "selenium.webdriver.geckodriver.0.30.0.1.nupkg.sha512",
         "selenium.webdriver.geckodriver.nuspec"
+      ]
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "type": "package",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll",
+        "seleniumextras.waithelpers.1.0.2.nupkg.sha512",
+        "seleniumextras.waithelpers.nuspec"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -4200,6 +4225,7 @@
       "Selenium.WebDriver >= 4.1.0",
       "Selenium.WebDriver.ChromeDriver >= 98.0.4758.8000",
       "Selenium.WebDriver.GeckoDriver >= 0.30.0.1",
+      "SeleniumExtras.WaitHelpers >= 1.0.2",
       "coverlet.collector >= 3.0.2"
     ]
   },
@@ -4269,6 +4295,10 @@
           "Selenium.WebDriver.GeckoDriver": {
             "target": "Package",
             "version": "[0.30.0.1, )"
+          },
+          "SeleniumExtras.WaitHelpers": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           },
           "coverlet.collector": {
             "target": "Package",

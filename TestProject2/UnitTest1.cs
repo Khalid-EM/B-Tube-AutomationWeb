@@ -3,6 +3,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 
 namespace TestProject2
@@ -40,22 +43,21 @@ namespace TestProject2
         public void Test_LoginAsAdmin()
         {
             DriverBrowser driver = new DriverBrowser();
-            //Open Browser 
-            
-    
+
+            var wait = new WebDriverWait(driver.WebDriver, TimeSpan.FromSeconds(10));
+
+            //var wait = driver.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+
+
             driver.WebDriver.Manage().Window.Maximize();
             // Navigate to Site
             driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
 
-            // Pauze voor de volgende actie
-            System.Threading.Thread.Sleep(6000);
-            // Identify Login
-            //IWebElement btubeLogin = webDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[3]"));
-            // Operation on btubeLogine
-            //btubeLogin.Click();
-
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='css-1jf7604']")));
+            //System.Threading.Thread.Sleep(5000);
 
             IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
+           
             btubeLogin.Click();
 
             btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
