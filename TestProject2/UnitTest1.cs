@@ -7,25 +7,45 @@ using OpenQA.Selenium.Interactions;
 
 namespace TestProject2
 {
+    public class DriverBrowser
+    {
+        IWebDriver webDriver = new ChromeDriver();
+
+
+        public void Take_Screenshot()
+        {
+            ((ITakesScreenshot)webDriver).GetScreenshot().SaveAsFile("Test.png", ScreenshotImageFormat.Png);
+        }
+
+        public IWebDriver WebDriver
+        {
+            get { return webDriver; }
+        }
+    }
+
+    
+
     public class Tests
     {
         // Hooks in NUnit
         [SetUp]
         public void Setup()
         {
-
+            
         }
+
 
 
         [Test]
         public void Test_LoginAsAdmin()
         {
+            DriverBrowser driver = new DriverBrowser();
             //Open Browser 
-            IWebDriver webDriver = new ChromeDriver();
-
-            webDriver.Manage().Window.Maximize();
+            
+    
+            driver.WebDriver.Manage().Window.Maximize();
             // Navigate to Site
-            webDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
 
             // Pauze voor de volgende actie
             System.Threading.Thread.Sleep(6000);
@@ -35,23 +55,23 @@ namespace TestProject2
             //btubeLogin.Click();
 
 
-            IWebElement btubeLogin = webDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
             btubeLogin.Click();
 
-            btubeLogin = webDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
             btubeLogin.SendKeys("brent.dar@ap.be");
-            btubeLogin = webDriver.FindElement(By.XPath("//input[@id='SignInPassword']"));
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInPassword']"));
             btubeLogin.SendKeys("hond");
-            btubeLogin = webDriver.FindElement(By.XPath("//button[@id='SignInButtonComplete']"));
-            Take_Screenshot();
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButtonComplete']"));
+            driver.Take_Screenshot();
             btubeLogin.Click();
-
-            
 
             //webDriver.Quit();
 
-
         }
+
+
+        
 
         [Test]
 
@@ -109,11 +129,6 @@ namespace TestProject2
 
         }
 
-        public void Take_Screenshot()
-        {
-            IWebDriver webDriver = new ChromeDriver();
-            ((ITakesScreenshot)webDriver).GetScreenshot().SaveAsFile("Test.png", ScreenshotImageFormat.Png);
-        }
 
         [Test]
         public void Test_Screenshot()
