@@ -199,6 +199,56 @@ namespace TestProject2
             //webDriver.Close();
 
         }
+        
+        [Test]
+
+        public void Test_login_link() 
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.Id("SignInButton"));
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.Id("GoToRegister"));
+            btubeLogin.Click();
+
+            driver.Take_Screenshot();
+
+
+            //webDriver.Close();
+
+        }
+
+        [Test]
+
+        public void Test_register_link() 
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.Id("RegisterButton"));
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.Id("GoToRegister"));
+            btubeLogin.Click();
+
+            driver.Take_Screenshot();
+
+
+            //webDriver.Close();
+
+        }
 
 
 
