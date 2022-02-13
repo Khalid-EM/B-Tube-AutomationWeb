@@ -169,7 +169,8 @@ namespace TestProject2
 
         [Test]
 
-        public void Test_more_info() //Visual test but at the same time functional => test will fail cuz no dropdown
+        public void Test_more_info() //Zelfs als de aan staat zal deze test slagen omdat hij op de effectief
+                                     // op de link kan klikken maar wordt niet redirected naar een andere pagina
         {
             //Open Browser 
             DriverBrowser driver = new DriverBrowser();
@@ -185,18 +186,15 @@ namespace TestProject2
             IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[2]/div/div/div/div/input"));
             btubeLogin.SendKeys("Battlefield 2025");
             btubeLogin.SendKeys(Keys.Down);
-            driver.Take_Screenshot(); // Laat de dropdown options zien
             btubeLogin.SendKeys(Keys.Enter);
             Thread.Sleep(2000); // De modal komt na een paar seconden delay
-                                //driver.Take_Screenshot();
-            ///Test zal slagen maar op de UI zal je te zien krijgen dat hij "No Options" krijgt, als er daarna een interactie gebeurd zal deze namelijk falen.
-            ///De onderste 3 lijnen code zal zijn voor de Rentbutton te klikken op de modal, maar die zal er niet zijn dus gaan hij falen
 
 
-            Thread.Sleep(2000);
             //btubeLogin = driver.WebDriver.FindElement(By.ClassName("css-14nkc1e"));
             btubeLogin = driver.WebDriver.FindElement(By.LinkText("Click here to see more info"));
             btubeLogin.Click();
+            driver.Take_Screenshot();
+
 
             //webDriver.Close();
 
