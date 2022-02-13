@@ -45,9 +45,9 @@ namespace TestProject2
         {
             DriverBrowser driver = new DriverBrowser();
 
-            var wait = new WebDriverWait(driver.WebDriver, TimeSpan.FromSeconds(10));
+            //var wait = new WebDriverWait(driver.WebDriver, TimeSpan.FromSeconds(10));
 
-            var wait2 = driver.WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            //var wait2 = driver.WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
 
             driver.WebDriver.Manage().Window.Maximize();
@@ -249,6 +249,164 @@ namespace TestProject2
             //webDriver.Close();
 
         }
+
+        [Test]
+
+        public void Test_add_credits() //Add credits macheert = the issue is als de bug wordt aangezet krijg je (amout -1)
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
+            Thread.Sleep(2000);
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
+            btubeLogin.SendKeys("brent.dar@ap.be");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInPassword']"));
+            btubeLogin.SendKeys("hond");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButtonComplete']"));
+            driver.Take_Screenshot();
+            btubeLogin.Click();
+            Thread.Sleep(2000); //Test gaat te snel en de pagina moet laden wanneer de user wordt ingelogd.
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//a[@href='#/profile']//button[@id='OrdersPageButton']"));
+            btubeLogin.Click();
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[normalize-space()='add credits']"));
+            btubeLogin.Click();
+            //btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@placeholder='5']"));
+            btubeLogin = driver.WebDriver.FindElement(By.Name("amount"));
+            //btubeLogin.Click();
+            btubeLogin.SendKeys("10");
+            //btubeLogin.SendKeys(Keys.Enter);
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[normalize-space()='buy']"));
+            btubeLogin.Click();
+
+
+            //webDriver.Quit();
+
+        }
+        [Test]
+
+        public void Test_credits_negative() // (Macheert nog niet)
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
+            Thread.Sleep(2000);
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
+            btubeLogin.SendKeys("brent.dar@ap.be");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInPassword']"));
+            btubeLogin.SendKeys("hond");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButtonComplete']"));
+            driver.Take_Screenshot();
+            btubeLogin.Click();
+            Thread.Sleep(2000); //Test gaat te snel en de pagina moet laden wanneer de user wordt ingelogd.
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//a[@href='#/profile']//button[@id='OrdersPageButton']"));
+            btubeLogin.Click();
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[normalize-space()='add credits']"));
+            btubeLogin.Click();
+            //btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@placeholder='5']"));
+            btubeLogin = driver.WebDriver.FindElement(By.Name("amount"));
+            //btubeLogin.Click();
+            btubeLogin.SendKeys("-1");
+            //Thread.Sleep(5000);
+            //btubeLogin.SendKeys(Keys.Enter);
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[normalize-space()='buy']"));
+            btubeLogin.Click();
+
+
+            //webDriver.Quit();
+
+        }
+        [Test]
+
+        public void Test_cancel_payment() //Cancel_payment gaat altijd slagen omdat er een assertion moet gebeuren tussen de links
+                                          // normaal mag hij niet redirecten, alleen maar terug gaan.
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
+            Thread.Sleep(2000);
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInEmail']"));
+            btubeLogin.SendKeys("brent.dar@ap.be");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='SignInPassword']"));
+            btubeLogin.SendKeys("hond");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButtonComplete']"));
+            driver.Take_Screenshot();
+            btubeLogin.Click();
+            Thread.Sleep(2000); //Test gaat te snel en de pagina moet laden wanneer de user wordt ingelogd.
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//a[@href='#/profile']//button[@id='OrdersPageButton']"));
+            btubeLogin.Click();
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[normalize-space()='add credits']"));
+            btubeLogin.Click();
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//a[normalize-space()='Cancel payment']"));
+            btubeLogin.Click();
+
+
+
+            //webDriver.Quit();
+
+        }
+        [Test]
+
+        public void Test_regex_register()
+        // De A en E worden niet meer herkend 
+        //als de bug aanstaat.
+        {
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            Thread.Sleep(4000);
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='RegisterButton']"));
+            Thread.Sleep(2000);
+            btubeLogin.Click();
+
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='RegisterFirstName']"));
+            btubeLogin.SendKeys("AardbEien");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='RegisterLastName']"));
+            btubeLogin.SendKeys("AardbEien");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='RegisterEmail']"));
+            btubeLogin.SendKeys("AardbEien@ap.be");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='RegisterPassword']"));
+            btubeLogin.SendKeys("AardbEien");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//input[@id='RegisterRePassword']"));
+            btubeLogin.SendKeys("AardbEien");
+            btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='RegisterButtonComplete']"));
+            driver.Take_Screenshot();
+            btubeLogin.Click();
+
+
+
+            //webDriver.Close();
+
+        }
+
+
 
 
 
