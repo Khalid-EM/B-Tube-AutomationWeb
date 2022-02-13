@@ -6,6 +6,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using System.Threading;
 
 
 namespace TestProject2
@@ -46,15 +47,18 @@ namespace TestProject2
 
             var wait = new WebDriverWait(driver.WebDriver, TimeSpan.FromSeconds(10));
 
-            //var wait = driver.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            var wait2 = driver.WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
 
             driver.WebDriver.Manage().Window.Maximize();
             // Navigate to Site
             driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
 
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='css-1jf7604']")));
-            //System.Threading.Thread.Sleep(5000);
+            //wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='css-1jf7604']")));
+            //Thread.Sleep(5000);
+
+           // wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@id='SignInButton']")));
+            Thread.Sleep(4000);
 
             IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("//button[@id='SignInButton']"));
            
@@ -87,7 +91,7 @@ namespace TestProject2
             webDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
 
             // Pauze voor de volgende actie
-            System.Threading.Thread.Sleep(6000);
+            Thread.Sleep(6000);
 
 
             IWebElement btubeLogin = webDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[2]/div/div/div/div/input"));
@@ -113,23 +117,91 @@ namespace TestProject2
             webDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
 
             // Pauze voor de volgende actie
-            System.Threading.Thread.Sleep(6000);
+            Thread.Sleep(6000);
 
 
             IWebElement btubeLogin = webDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[2]/div/div/div/div/input"));
             btubeLogin.SendKeys("Battlefield 2025");
             btubeLogin.SendKeys(Keys.Down);
             btubeLogin.SendKeys(Keys.Enter);
-
-
-
-
-
+            Thread.Sleep(2000);
+            btubeLogin = webDriver.FindElement(By.CssSelector("#RentMovieButton"));
+            btubeLogin.Click();
 
             //webDriver.Close();
 
 
         }
+
+        [Test]
+
+        public void Test_search_bar_2() //Visual test but at the same time functional => test will fail cuz no dropdown
+        {
+            //Open Browser 
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            // Pauze voor de volgende actie
+            Thread.Sleep(6000);
+
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[2]/div/div/div/div/input"));
+            btubeLogin.SendKeys("Battlefield 2025");
+            btubeLogin.SendKeys(Keys.Down);
+            driver.Take_Screenshot(); // Laat de dropdown options zien
+            btubeLogin.SendKeys(Keys.Enter);
+            Thread.Sleep(2000); // De modal komt na een paar seconden delay
+            //driver.Take_Screenshot();
+            ///Test zal slagen maar op de UI zal je te zien krijgen dat hij "No Options" krijgt, als er daarna een interactie gebeurd zal deze namelijk falen.
+            ///De onderste 3 lijnen code zal zijn voor de Rentbutton te klikken op de modal, maar die zal er niet zijn dus gaan hij falen
+
+            
+           Thread.Sleep(2000);
+           btubeLogin = driver.WebDriver.FindElement(By.CssSelector("#RentMovieButton"));
+           btubeLogin.Click();
+            
+            //webDriver.Close();
+
+        }
+
+        [Test]
+
+        public void Test_more_info() //Visual test but at the same time functional => test will fail cuz no dropdown
+        {
+            //Open Browser 
+            DriverBrowser driver = new DriverBrowser();
+
+            driver.WebDriver.Manage().Window.Maximize();
+            // Navigate to Site
+            driver.WebDriver.Navigate().GoToUrl("https://brightshopapp.herokuapp.com/#/");
+
+            // Pauze voor de volgende actie
+            Thread.Sleep(6000);
+
+
+            IWebElement btubeLogin = driver.WebDriver.FindElement(By.XPath("/html/body/div/div/div[2]/header/div[2]/div/div/div/div/input"));
+            btubeLogin.SendKeys("Battlefield 2025");
+            btubeLogin.SendKeys(Keys.Down);
+            driver.Take_Screenshot(); // Laat de dropdown options zien
+            btubeLogin.SendKeys(Keys.Enter);
+            Thread.Sleep(2000); // De modal komt na een paar seconden delay
+                                //driver.Take_Screenshot();
+            ///Test zal slagen maar op de UI zal je te zien krijgen dat hij "No Options" krijgt, als er daarna een interactie gebeurd zal deze namelijk falen.
+            ///De onderste 3 lijnen code zal zijn voor de Rentbutton te klikken op de modal, maar die zal er niet zijn dus gaan hij falen
+
+
+            Thread.Sleep(2000);
+            //btubeLogin = driver.WebDriver.FindElement(By.ClassName("css-14nkc1e"));
+            btubeLogin = driver.WebDriver.FindElement(By.LinkText("Click here to see more info"));
+            btubeLogin.Click();
+
+            //webDriver.Close();
+
+        }
+
 
 
         [Test]
@@ -141,7 +213,7 @@ namespace TestProject2
             webDriver.Manage().Window.Maximize();
             // Navigate to Site
             webDriver.Url = "https://brightshopapp.herokuapp.com/#/";
-            System.Threading.Thread.Sleep(10000);
+            Thread.Sleep(10000);
             ((ITakesScreenshot)webDriver).GetScreenshot().SaveAsFile("Test.png", ScreenshotImageFormat.Png);
             webDriver.Quit();
 
@@ -155,7 +227,7 @@ namespace TestProject2
             webDriver.Manage().Window.Maximize();
             // Navigate to Site
             webDriver.Url = "https://brightshopapp.herokuapp.com/#/";
-            System.Threading.Thread.Sleep(10000);
+            Thread.Sleep(10000);
             ((ITakesScreenshot)webDriver).GetScreenshot().SaveAsFile("Test.png", ScreenshotImageFormat.Png);
             webDriver.Close();
 
